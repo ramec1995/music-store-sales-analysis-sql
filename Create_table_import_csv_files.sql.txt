@@ -1,0 +1,121 @@
+create table album( album_id int,
+title varchar(100),
+artist_id int);
+
+Copy album (album_id,	title,	artist_id)
+from 'C:\Program Files\PostgreSQL\18\data\album.csv'
+csv header;
+
+create table playlist(playlist_id int,
+name varchar(200));
+
+Copy playlist (playlist_id, name)
+from 'C:\Program Files\PostgreSQL\18\data\playlist.csv'
+csv header;
+
+create table artist(artist_id int,
+name varchar(100));
+
+Copy artist(artist_id, name)
+from 'C:\Program Files\PostgreSQL\18\data\artist.csv'
+csv header;
+
+create table customer (customer_id int primary key,
+first_name varchar(100),
+last_name varchar(100),
+company varchar(100),
+address varchar(500),
+city varchar(100),
+state varchar(100),
+country varchar(100),
+postal_code varchar(100),
+phone varchar(100),
+fax varchar(100),
+email varchar(100),
+support_rep_id int);
+
+copy customer (customer_id, first_name, last_name, company, address, city, state, country, postal_code, phone, fax, email, support_rep_id)
+from 'C:\Program Files\PostgreSQL\18\data\customer.csv'
+csv header;
+
+create table employee(employee_id int,
+last_name varchar(100),
+first_name varchar(100),
+title varchar(100),
+reports_to varchar(100),
+levels varchar(100),
+birthdate date,
+hire_date date,
+address	varchar(100),
+city varchar(100),
+state	varchar(100),
+country varchar(100),
+postal_code varchar(100),
+phone varchar(100),
+fax	varchar(100),
+email varchar(100));
+
+copy employee(employee_id,	last_name,	first_name,	title,	reports_to,	levels,	birthdate,	hire_date,	address,	city,
+state,	country,	postal_code,	phone,	fax,	email)
+from 'C:\Program Files\PostgreSQL\18\data\employee.csv'
+csv header;
+
+create table genre(genre_id int,
+name varchar(200));
+
+copy genre(genre_id,	name)
+from 'C:\Program Files\PostgreSQL\18\data\genre.csv'
+csv header;
+
+create table invoice(invoice_id int,
+customer_id int,
+invoice_date date,
+billing_address varchar(500),
+billing_city varchar(100),
+billing_state varchar(100),
+billing_country varchar(100),
+billing_postal_code varchar(100),
+total numeric(10,2));
+
+copy invoice(invoice_id, customer_id, invoice_date,	billing_address, billing_city,	billing_state,	billing_country, 
+billing_postal_code,	total)
+from 'C:\Program Files\PostgreSQL\18\data\invoice.csv'
+csv header;
+
+create table invoice_line(invoice_line_id int,
+invoice_id int,
+track_id int,
+unit_price numeric(10,2),
+quantity int);
+
+Copy invoice_line(invoice_line_id,	invoice_id,	track_id,	unit_price,	quantity)
+From 'C:\Program Files\PostgreSQL\18\data\invoice_line.csv'
+csv header;
+
+Create table media_type(media_type_id int,
+name varchar(100));
+
+Copy media_type(media_type_id,	name)
+From 'C:\Program Files\PostgreSQL\18\data\media_type.csv'
+csv header;
+
+Create table playlist_track(playlist_id int,
+track_id int);
+
+Copy playlist_track(playlist_id, track_id)
+From 'C:\Program Files\PostgreSQL\18\data\playlist_track.csv'
+csv header;
+
+Create table track(track_id int,
+name varchar(500),
+album_id int,
+media_type_id int,
+genre_id int,
+composer varchar(500),
+milliseconds Bigint,
+bytes Bigint,
+unit_price numeric(10,2));
+
+Copy track(track_id,	name,	album_id,	media_type_id,	genre_id,	composer,	milliseconds,	bytes,	unit_price)
+From 'C:\Program Files\PostgreSQL\18\data\track.csv'
+csv header;
